@@ -23,6 +23,7 @@ def test_add_none_matrix():
                                             [None, 1, 2, None],
                                             [None, 1, 2, None],
                                             [None, None, None, None]]
+    assert add_none_matrix([]) == [None, None]
     
 def test_add_list_neighbour():
 
@@ -31,7 +32,11 @@ def test_add_list_neighbour():
                                                                   [[1, 1, None, None, 2], 
                                                                    [2, 2, None, 1, None]]]
     
+    assert add_list_neighbour([]) == []
+
+    
 
 def test_medium_of_list():
 
     assert medium_of_list([1, 2, 3]) == 2
+    assert medium_of_list([]) == 0

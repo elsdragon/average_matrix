@@ -51,39 +51,46 @@ def add_none_matrix(matrix):
     '''
 
     new_matrix = matrix
-    
-    for i in range(len(new_matrix)):
-        new_matrix[i].insert(0, None)
-        new_matrix[i].append(None)
-        
+    if new_matrix == []:
+        new_matrix = add_none_list(matrix)
+    else:
+        for i in range(len(new_matrix)):
+            new_matrix[i].insert(0, None)
+            new_matrix[i].append(None)
+            
 
-    new_list = []
-    i = 0
-    while i < len(matrix[0]):
-        new_list.append(None)
-        i += 1
-    
-    new_matrix.insert(0,new_list)
-    new_matrix.append(new_list)
+        new_list = []
+        i = 0
+        while i < len(matrix[0]):
+            new_list.append(None)
+            i += 1
+
+        new_matrix.insert(0,new_list)
+        new_matrix.append(new_list)
     
     return new_matrix
 
 def add_list_neighbour(matrix):
-    ''' create a new list with neighbour elements on matrix'''
+    ''' create a new matrix every element is an element and his neighbour elements on matrix'''
     neighbour_matrix = []
+    
+    if matrix == []:
 
-    for i in range(1, len(matrix)-1):
-        new_matrix= []
-        for j in range(1, len(matrix[i])-1):
-            new_list = []
-            new_list.append(matrix[i][j])
-            new_list.append(matrix[i-1][j])
-            new_list.append(matrix[i+1][j])
-            new_list.append(matrix[i][j-1])
-            new_list.append(matrix[i][j+1])
-            new_matrix.append(new_list)
+        neighbour_matrix = matrix
+    
+    else:
+        for i in range(1, len(matrix)-1):
+            new_matrix= []
+            for j in range(1, len(matrix[i])-1):
+                new_list = []
+                new_list.append(matrix[i][j])
+                new_list.append(matrix[i-1][j])
+                new_list.append(matrix[i+1][j])
+                new_list.append(matrix[i][j-1])
+                new_list.append(matrix[i][j+1])
+                new_matrix.append(new_list)
 
-        neighbour_matrix.append(new_matrix)    
+            neighbour_matrix.append(new_matrix)    
     
     return neighbour_matrix
 
@@ -92,11 +99,15 @@ def medium_of_list(list):
     ''' 
     Calculate arithmetic average from a list'''
     total = 0
-    divisor = len(list)
-    for element in list:
-        if element != None:
-            total += element
-        if element == None:
-            divisor -= 1
-    
-    return total/divisor
+    result = 0
+    if list == []:
+        result = 0
+    else:
+        divisor = len(list)
+        for element in list:
+            if element != None:
+                total += element
+            if element == None:
+                divisor -= 1
+        result = total/divisor
+    return result

@@ -9,3 +9,5 @@ def test_matriz_promedio():
                                      [1.75, 2.0, 2.0],
                                      [2.3333333333333335, 1.75, 2.0]]
     
+    assert matriz_promedio([]) == []
+    
